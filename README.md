@@ -13,7 +13,9 @@ game engine
 - Visual Studio Code
 
 Set **VULKAN_SDK** Environment Variable [see here](https://vulkan.lunarg.com/doc/sdk/1.3.224.1/linux/getting_started.html)
+
 ```bash
+# vim /etc/profile and vim ~/.bashrc and vim ~/.zshrc
 export VULKAN_SDK=/opt/vulkan/x86_64
 export PATH=$PATH:$VULKAN_SDK/bin
 export LD_LIBRARY_PATH=$VULKAN_SDK/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
