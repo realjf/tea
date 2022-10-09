@@ -14,34 +14,36 @@
 #endif
 
 typedef enum log_level {
-    LOG_LEVEL_FATAL = 0,
-    LOG_LEVEL_ERROR = 1,
-    LOG_LEVEL_WARN = 2,
-    LOG_LEVEL_INFO = 3,
-    LOG_LEVEL_DEBUG = 4,
-    LOG_LEVEL_TRACE = 5
+  LOG_LEVEL_FATAL = 0,
+  LOG_LEVEL_ERROR = 1,
+  LOG_LEVEL_WARN = 2,
+  LOG_LEVEL_INFO = 3,
+  LOG_LEVEL_DEBUG = 4,
+  LOG_LEVEL_TRACE = 5
 } log_level;
 
 b8 initialize_logging();
 void shutdown_logging();
 
-TAPI void log_output(log_level level, const char* message, ...);
+TAPI void log_output(log_level level, const char *message, ...);
 
 // Logs a fatal-level message
-#define TFATAL(message, ...) log_output(LOG_LEVEL_FATAL, message, ##__VA_ARGS__);
+#define TFATAL(message, ...)                                                   \
+  log_output(LOG_LEVEL_FATAL, message, ##__VA_ARGS__);
 
 #ifndef TERROR
 // Logs an error-level message
-#define TERROR(message, ...) log_output(LOG_LEVEL_ERROR, message, ##__VA_ARGS__);
-#endif  // !TERROR
+#define TERROR(message, ...)                                                   \
+  log_output(LOG_LEVEL_ERROR, message, ##__VA_ARGS__);
+#endif // !TERROR
 
-#ifdef LOG_WARN_ENABLED == 1
+#if LOG_WARN_ENABLED == 1
 // Logs a warning-level message
 #define TWARN(message, ...) log_output(LOG_LEVEL_WARN, message, ##__VA_ARGS__);
 #else
 // Does nothing when LOG_WARN_ENABLED != 1
 #define TWARN(message, ...)
-#endif  // LOG_WARN_ENABLED
+#endif // LOG_WARN_ENABLED
 
 #if LOG_INFO_ENABLED == 1
 // Logs a info-level message
@@ -49,20 +51,22 @@ TAPI void log_output(log_level level, const char* message, ...);
 #else
 // Does nothing when LOG_INFO_ENABLED != 1
 #define TINFO(message, ...)
-#endif  // LOG_INFO_ENABLED
+#endif // LOG_INFO_ENABLED
 
 #if LOG_DEBUG_ENABLED == 1
 // Logs a debug-level message
-#define TDEBUG(message, ...) log_output(LOG_LEVEL_DEBUG, message, ##__VA_ARGS__);
+#define TDEBUG(message, ...)                                                   \
+  log_output(LOG_LEVEL_DEBUG, message, ##__VA_ARGS__);
 #else
 // Does nothing when LOG_DEBUG_ENABLED != 1
 #define TDEBUG(message, ...)
-#endif  // LOG_DEBUG_ENABLED
+#endif // LOG_DEBUG_ENABLED
 
 #if LOG_TRACE_ENABLED == 1
 // Logs a trace-level message
-#define TTRACE(message, ...) log_output(LOG_LEVEL_TRACE, message, ##__VA_ARGS__);
+#define TTRACE(message, ...)                                                   \
+  log_output(LOG_LEVEL_TRACE, message, ##__VA_ARGS__);
 #else
 // Does nothing when LOG_TRACE_ENABLED != 1
 #define TTRACE(message, ...)
-#endif  // LOG_TRACE_ENABLED
+#endif // LOG_TRACE_ENABLED

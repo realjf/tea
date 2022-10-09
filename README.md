@@ -22,5 +22,6 @@ export VK_LAYER_PATH=$VULKAN_SDK/etc/vulkan/explicit_layer.d
 install required dependencies
 ```bash
 apt-get install libx11-xcb-dev libxkbcommon-x11-dev libx11-dev
+# install c/c++ format vscode extension
+apt-get install clang-format
 ```
-
